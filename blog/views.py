@@ -4,7 +4,4 @@ import os
 
 @api_view(['GET'])
 def welcome_api(request):
-
-    if request.method == 'GET':
-        print("secret_key",os.environ.get("SECRET_KEY"))
-        return Response("Welcome to Blogs API")
+    return Response("Welcome to Blogs API")
