@@ -23,7 +23,7 @@ class BlogView(viewsets.ModelViewSet):
 
     def list(self, request):
         result = Blogs.objects.all()
-        serializer = BlogSerializer(result)
+        serializer = BlogSerializer(result, context={"request": request}, many=True)
         return BlogResponse(data=serializer.data).build_response()
 
     def create(self, request):
