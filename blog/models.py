@@ -5,7 +5,7 @@ class Blogs(models.Model):
         db_table = "BLOG"
 
     id = models.BigAutoField(db_column="ID", primary_key=True)
-    blog_content = models.JSONField(
+    blog_content = models.TextField(
         db_column="BLOG_CONTENT", null=True, blank=True
     )
     created_date = models.DateTimeField(

@@ -1,4 +1,4 @@
-from stochasticapi.utilities.http_codes import OK
+from .http_codes import OK
 from rest_framework.response import Response
 
 

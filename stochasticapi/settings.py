@@ -96,7 +96,8 @@ REST_FRAMEWORK = {
     ),
     'DEFAULT_PARSER_CLASSES': (
         'rest_framework.parsers.JSONParser',
-    )
+    ),
+    'EXCEPTION_HANDLER': 'stochasticapi.configurations.exceptions.blog_exceptions.custom_exception_handler',
 }
 
 
