@@ -16,8 +16,11 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from django.urls.conf import include
+from drf_yasg.views import get_schema_view
+from drf_yasg import openapi
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('',include('blog.urls')),
+
 ]
