@@ -1,4 +1,6 @@
+from django.http.response import Http404
 from rest_framework.decorators import api_view
+from stochasticapi.configurations.exceptions.blog_core_exception import BlogError
 from stochasticapi.configurations.utilities.api_response import BlogResponse
 from rest_framework import viewsets
 from stochasticapi.configurations.utilities.global_constants import (
@@ -6,7 +8,7 @@ from stochasticapi.configurations.utilities.global_constants import (
     SUCCESSFULLY_UPDATED,
 )
 
-from stochasticapi.configurations.utilities.http_codes import CREATED, UPDATED
+from stochasticapi.configurations.utilities.http_codes import BAD_REQUEST, CREATED, UPDATED
 from .models import Blogs
 from .serializers import BlogSerializer
 
@@ -26,6 +28,19 @@ class BlogView(viewsets.ModelViewSet):
         serializer = BlogSerializer(result, context={"request": request}, many=True)
         return BlogResponse(data=serializer.data).build_response()
 
+    def retrieve(self, request, pk):
+        try:
+            result = Blogs.objects.get(id=pk)
+        except Blogs.DoesNotExist:
+            raise BlogError(
+                http_status=BAD_REQUEST,
+                message="No Matching Record found"
+            )
+
+        serializer = BlogSerializer(result, context={"request": request}, many=True)
+        return BlogResponse(data=serializer.data).build_response()
+
+
     def create(self, request):
         serializer = BlogSerializer(data=request.data, context={"request": request})
         serializer.is_valid(raise_exception=True)
@@ -37,8 +52,14 @@ class BlogView(viewsets.ModelViewSet):
             message=SUCCESSFULLY_CREATED,
         ).build_response()
 
-    def put(self, request, pk):
-        instance = Blogs.objects.get(id=pk)
+    def update(self, request, pk):
+        try:
+            instance = Blogs.objects.get(id=pk)
+        except Blogs.DoesNotExist:
+            raise BlogError(
+                http_status=BAD_REQUEST,
+                message="No Matching Record found"
+            )
         serializer = BlogSerializer(
             instance=instance,
             data=request.data,
