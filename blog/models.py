@@ -20,3 +20,7 @@ class Blogs(models.Model):
     author = models.CharField(
         db_column="AUTHOR", max_length=30
     )
+    category = models.CharField(
+        db_column="CATEGORY", max_length=30
+    )
+
