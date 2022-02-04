@@ -37,7 +37,7 @@ class BlogView(viewsets.ModelViewSet):
                 message="No Matching Record found"
             )
 
-        serializer = BlogSerializer(result, context={"request": request}, many=True)
+        serializer = BlogSerializer(result, context={"request": request})
         return BlogResponse(data=serializer.data).build_response()
 
 
