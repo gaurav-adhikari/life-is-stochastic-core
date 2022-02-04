@@ -86,11 +86,11 @@ WSGI_APPLICATION = 'stochasticapi.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'dbf6ptci4qaavj',
-        'USER': 'aistenfyzypdsc',
-        'PASSWORD': '7583138fbf70c7fe3854e44252b5016eef48a0181c0cb4f64867c7d8826523b1',
-        'HOST': 'ec2-3-91-135-72.compute-1.amazonaws.com',
-        'PORT': '5432',
+        'USER': os.environ["DATABASE_USER"],
+        'NAME': os.environ["DATABASE_NAME"],
+        'PASSWORD': os.environ["DATABASE_PASSWORD"] ,
+        'HOST': os.environ["DATABASE_HOST"],
+        'PORT': os.environ["DATABASE_PORT"],
     }
 }
 
