@@ -8,6 +8,7 @@ Production version is currently hosted at [heroku](https://stochastic-core.herok
 
 	$ conda create -n stochastic-core
 	$ pip install -r requirements.txt
+	$ conda activate stochastic-core
 	$ python manage.py runserver
 
 
