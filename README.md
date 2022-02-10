@@ -22,3 +22,31 @@ set DATABASE_USER=
 set DATABASE_PASSWORD=
 set DATABASE_HOST=
 set DATABASE_PORT=
+
+
+
+## Stochastic API DOCS
+
+RETRIEVE: /blog/{id}/
+
+GET: /blog
+
+POST: /blog/
+```
+    {
+    	$"blog_title": "this is title",
+    	$"blog_content": "<h1> Hello world</h1>",
+    	$"author": "Gaurav Adhikari",
+    	$"category": "Tech"
+    }
+```
+
+PUT: /blog/
+```
+    {
+    	"blog_title": "this is title2",
+    	"blog_content": "<h1> Hello world</h1>",
+    	"author": "Gaurav Adhikari",
+    	"category": "Tech"
+    }
+```
