@@ -22,5 +22,5 @@ from drf_yasg import openapi
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('',include('blog.urls')),
-
+    path('contactus/',include('contactus.urls')),
 ]
