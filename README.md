@@ -7,6 +7,7 @@ Production version is currently hosted at [heroku](https://stochastic-core.herok
 ## Installation
 
 	$ conda create -n stochastic-core
+	$ conda activate stochastic-core
 	$ pip install -r requirements.txt
 	$ python manage.py runserver
 
@@ -21,3 +22,31 @@ set DATABASE_USER=
 set DATABASE_PASSWORD=
 set DATABASE_HOST=
 set DATABASE_PORT=
+
+
+
+## Stochastic API DOCS
+
+RETRIEVE: /blog/{id}/
+
+GET: /blog
+
+POST: /blog/
+```
+    {
+    	$"blog_title": "this is title",
+    	$"blog_content": "<h1> Hello world</h1>",
+    	$"author": "Gaurav Adhikari",
+    	$"category": "Tech"
+    }
+```
+
+PUT: /blog/
+```
+    {
+    	"blog_title": "this is title2",
+    	"blog_content": "<h1> Hello world</h1>",
+    	"author": "Gaurav Adhikari",
+    	"category": "Tech"
+    }
+```
